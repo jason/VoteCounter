@@ -9,6 +9,7 @@ gem 'awesome_print', :require => 'ap'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :production do
   gem 'pg'
+  ruby 'ruby-2.0.0'
 end
 group :development, :test do
   gem 'rspec-rails'
@@ -16,7 +17,6 @@ group :development, :test do
   gem 'sqlite3'
   gem 'guard-zeus'
   gem 'capybara'
-
 end
 
 group :development do
@@ -27,8 +27,6 @@ group :development do
   gem 'annotate'
 end
 group :test do
-
-
   gem 'rb-fsevent', '0.9.1', :require => false
   gem 'growl'
   gem 'factory_girl_rails'
