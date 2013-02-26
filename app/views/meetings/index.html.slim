@@ -1,0 +1,8 @@
+h3.subheader Meeting Date:
+- @meetings.each do |meeting|
+  
+    h4.subheader
+      = link_to meeting.meeting_date.strftime("%B %d, %Y"), meeting_url(meeting.id)
+      ul
+        - meeting.resolutions.each do |resolutions|
+          li = resolutions.title
