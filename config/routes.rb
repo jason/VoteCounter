@@ -3,7 +3,8 @@ VoteCounter::Application.routes.draw do
   devise_for :users
   resources :meetings
   resources :resolutions
-
+  resources :members
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

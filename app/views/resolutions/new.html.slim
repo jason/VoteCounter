@@ -1,0 +1,12 @@
+= provide(:title, 'New Resolution')
+.row
+  .ten.columns
+    h1 New Resolution
+
+    = form_for(@resolution) do |f|
+      = f.label :title
+      = f.text_field :title
+      br
+      = f.label :body
+      = f.text_area :body
+      = f.submit

@@ -1,0 +1,7 @@
+= provide(:title, "All Members")
+.row
+  .twelve.columns
+    h1 #{yield(:title)}
+    ul
+      = render @members
+    br

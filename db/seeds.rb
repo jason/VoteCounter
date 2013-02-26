@@ -59,13 +59,18 @@ resolutions.each do |attributes|
   end
 end
 
-members = Member.create([{:email => 'technique@gmail.com', :name => 'Jason Wong'}, 
+members = [{:email => 'technique@gmail.com', :name => 'Jason Wong'}, 
                         {:name => 'Trevor McNeil', :email => 'trevormcneil@gmail.com'},
                         {:name => 'Mary Jung', :email => 'maryjungsf@gmail.com'},
                         {:name => 'David Chiu', :email => 'davidchiu70@gmail.com'},
                         {:name => 'Kat Anderson', :email => 'katanderson63@me.com'},
                         {:name => 'Malia Cohen', :email => 'malia.cohen@gmail.com'},
                         {:name => 'Tom Hsieh', :email => 'twohsieh@sbcglobal.net'},
-                        ])
-
+                        ]
+members.each do |attributes|
+  Member.find_or_initialize_by_name(attributes[:name]).tap do |t|
+    t.email = attributes[:email]
+    t.save!
+  end
+end
 

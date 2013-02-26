@@ -1,0 +1,15 @@
+= provide(:title, "Add Member")
+
+h1 = 
+
+.row
+  .ten.columns
+    h1 = yield(:title)
+
+    = form_for(@member) do |f|
+      = f.label :name
+      = f.text_field :name
+      br
+      = f.label :email
+      = f.text_field :email
+      = f.submit
