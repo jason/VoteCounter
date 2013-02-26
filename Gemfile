@@ -1,5 +1,6 @@
 source 'https://rubygems.org'
 
+
 gem 'rails' 
 gem 'bcrypt-ruby', '3.0.1'
 gem 'slim-rails'
@@ -9,7 +10,6 @@ gem 'awesome_print', :require => 'ap'
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :production do
   gem 'pg'
-  ruby 'ruby-2.0.0'
 end
 group :development, :test do
   gem 'rspec-rails'
@@ -62,3 +62,4 @@ gem 'jquery-rails'
 
 # To use debugger
 # gem 'debugger'
+end
