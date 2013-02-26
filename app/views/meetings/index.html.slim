@@ -4,5 +4,5 @@ h3.subheader Meeting Date:
     h4.subheader
       = link_to meeting.meeting_date.strftime("%B %d, %Y"), meeting_url(meeting.id)
       ul
-        - meeting.resolutions.each do |resolutions|
-          li = resolutions.title
+        - meeting.resolutions.each do |resolution|
+          li = link_to(resolution.title, resolution_url(resolution))

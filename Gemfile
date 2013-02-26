@@ -7,7 +7,9 @@ gem 'devise'
 gem 'awesome_print', :require => 'ap'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+group :production do
+  gem 'pg'
+end
 group :development, :test do
   gem 'rspec-rails'
   gem 'guard-rspec'

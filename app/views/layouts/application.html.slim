@@ -16,4 +16,6 @@ html
             ul.right
               li.has-dropdown
                 = link_to "Members", members_url
+                ul.dropdown
+                  li = link_to "Add Member", new_member_url
         = yield

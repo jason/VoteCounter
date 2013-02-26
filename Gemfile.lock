@@ -96,7 +96,7 @@ GEM
       guard
       zeus
     hike (1.2.1)
-    i18n (0.6.1)
+    i18n (0.6.2)
     journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
@@ -123,6 +123,7 @@ GEM
     multi_json (1.6.1)
     nokogiri (1.5.6)
     orm_adapter (0.4.0)
+    pg (0.14.1)
     polyglot (0.3.3)
     pry (0.9.12)
       coderay (~> 1.0.5)
@@ -247,6 +248,7 @@ DEPENDENCIES
   guard-zeus
   jquery-rails
   meta_request
+  pg
   pry-rails
   rails
   rb-fsevent (= 0.9.1)
