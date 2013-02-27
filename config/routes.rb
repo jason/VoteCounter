@@ -1,7 +1,9 @@
 VoteCounter::Application.routes.draw do
   root :to => "meetings#index"
   devise_for :users
-  resources :meetings
+  resources :meetings do
+    resources :resolutions
+  end
   resources :resolutions
   resources :members
   

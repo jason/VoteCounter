@@ -7,7 +7,7 @@ class MeetingsController < ApplicationController
 
   def create
     @meeting = Meeting.create!(params[:meeting])
-    respond_with(@meeting, :location => meetings_url)
+    respond_with(@meeting)
   end
 
   def index
@@ -17,5 +17,5 @@ class MeetingsController < ApplicationController
   def show
     @meeting = Meeting.find(params[:id])
   end
-
+  
 end

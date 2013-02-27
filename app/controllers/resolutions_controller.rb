@@ -2,18 +2,26 @@ class ResolutionsController < ApplicationController
   respond_to :html, :js
 
   def new
-    @resolution = Resolution.new
+    @meeting = Meeting.find(params[:meeting_id])
+    @resolution = @meeting.resolutions.build
   end
 
   def create
-    @resolution = Resolution.new(params[:resolution])
-    respond_with(@resolution)
+    @meeting = Meeting.find(params[:meeting_id])
+    @resolution = @meeting.resolutions.build(params[:resolution])
+      if @resolution.save!
+        flash[:notice] = "New Resolution created!"
+      end
+    respond_with(@resolution, :location => meeting_resolutions_url(@meeting))
   end
+
   def index
-    @resolutions = Resolution.all
+    @meeting = Meeting.find(params[:meeting_id])
+    @resolutions = @meeting.resolutions
   end
 
   def show
     @resolution = Resolution.find(params[:id])
   end
+
 end

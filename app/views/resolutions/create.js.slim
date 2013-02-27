@@ -1,1 +1,3 @@
-| $('.new_resolution').hide().append('#{j render("resolution") }')
+| $('.new_link').show();
+| $('.new_resolution').hide();
+| $('ul').after(" #{ j render(@resolution) }");
