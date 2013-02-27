@@ -74,3 +74,10 @@ members.each do |attributes|
   end
 end
 
+vote_types = [{:name => "Aye"}, {:name => "Nay"}, {:name => "Abstain"}]
+
+vote_types.each do |attributes|
+    VoteType.find_or_initialize_by_name(attributes[:name]) do |t|
+        t.save!
+    end
+end

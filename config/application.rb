@@ -34,7 +34,7 @@ module VoteCounter
     # config.i18n.default_locale = :de
 
     # Make Heroku Happy https://devcenter.heroku.com/articles/rails3x-asset-pipeline-cedar#troubleshooting
-    config.assets.initialize_on_precompile = false
+    #config.assets.initialize_on_precompile = false
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
 

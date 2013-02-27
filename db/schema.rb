@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130225234453) do
+ActiveRecord::Schema.define(:version => 20130227183312) do
 
   create_table "meeting_members", :force => true do |t|
     t.integer  "meeting_id"
@@ -60,6 +60,12 @@ ActiveRecord::Schema.define(:version => 20130225234453) do
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+
+  create_table "vote_types", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "votes", :force => true do |t|
     t.integer  "choice"

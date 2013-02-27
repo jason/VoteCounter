@@ -4,6 +4,6 @@
 
     h5 = link_to "New Resolution", new_meeting_resolution_path(@meeting), :class => "new_link", :remote => true
     
-    ul
+    ul.resolutions
       = render @resolutions
     br

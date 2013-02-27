@@ -1,7 +1,11 @@
 = provide(:title, @resolution.title)
 .row
   .twelve.columns
-    h1 #{ @resolution.title }
-    ul
-      = @resolution.body
-    br
+    h2 = @resolution.title 
+    
+    p  = @resolution.body
+
+    - @members.each do |n|  
+      = form_for @votes do |f| 
+        = f.label n.name
+        

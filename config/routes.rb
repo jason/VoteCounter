@@ -7,6 +7,7 @@ VoteCounter::Application.routes.draw do
   resources :resolutions
   resources :members
   
+  resources :votes
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

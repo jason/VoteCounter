@@ -22,6 +22,8 @@ class ResolutionsController < ApplicationController
 
   def show
     @resolution = Resolution.find(params[:id])
+    @members = Member.all
+    @votes = @resolution.votes.build
   end
 
 end
