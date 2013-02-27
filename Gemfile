@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-
+gem 'thin'
 gem 'rails' 
 gem 'bcrypt-ruby', '3.0.1'
 gem 'slim-rails'
