@@ -5,6 +5,7 @@ class ResolutionsController < ApplicationController
     @meeting = Meeting.find(params[:meeting_id])
     @resolution = @meeting.resolutions.build
   end
+  
 
   def create
     @meeting = Meeting.find(params[:meeting_id])
@@ -23,7 +24,7 @@ class ResolutionsController < ApplicationController
   def show
     @resolution = Resolution.find(params[:id])
     @members = Member.all
-    @votes = @resolution.votes.build
+    @vote = VoteType.all
   end
 
 end

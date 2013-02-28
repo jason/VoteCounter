@@ -1,11 +1,29 @@
 = provide(:title, @resolution.title)
 .row
-  .twelve.columns
+  .ten.columns
     h2 = @resolution.title 
-    
-    p  = @resolution.body
+    p = @resolution.body
+    - @members.each do |n|
+      = n.name
+      = form_for(n.votes.build(:member_id => n.id, :resolution_id => @resolution.id), :html => {:class => "custom"}) do |f| 
+        - VoteType.all.each_with_index do |option, index|
+          = f.label(:vote_type_id, option.name, :class => "vote")
+          = f.radio_button(:vote_type_id, option.id, :class => "radio") 
+          = f.hidden_field(:member_id)
+          = f.hidden_field(:resolution_id)
 
-    - @members.each do |n|  
-      = form_for @votes do |f| 
-        = f.label n.name
+  .two.columns.none
+    ul
+    - @vote.each do |c|
+      h5 #{c.name} #{c.vote_count(@resolution)}
+
+
+javascript:
+  $(document).ready(function() {
+    $('.radio').change(function () {
+      $(this).closest('form').submit();
+    });
+  });
+    
+         
         
