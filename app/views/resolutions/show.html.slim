@@ -5,23 +5,27 @@
     p = @resolution.body
     - @members.each do |n|
       = n.name
-      = form_for(n.votes.build(:member_id => n.id, :resolution_id => @resolution.id), :html => {:class => "custom"}) do |f| 
+      = form_for(n.votes.build(:member_id => n.id, :resolution_id => @resolution.id), :html => {:class => "custom"}, :remote => true) do |f| 
         - VoteType.all.each_with_index do |option, index|
           = f.label(:vote_type_id, option.name, :class => "vote")
           = f.radio_button(:vote_type_id, option.id, :class => "radio") 
           = f.hidden_field(:member_id)
           = f.hidden_field(:resolution_id)
 
-  .two.columns.none
-    ul
-    - @vote.each do |c|
-      h5 #{c.name} #{c.vote_count(@resolution)}
+  .two.columns.counter
+      = render :partial => "vote_types/vote_type", :collection => @vote_types, :locals => { :resolution => @resolution }
+      
 
 
 javascript:
   $(document).ready(function() {
     $('.radio').change(function () {
+      //$.post("/votes", function (callback) {return callback});
+      //{
+      //type: "POST",
+      //url: "/votes"})
       $(this).closest('form').submit();
+
     });
   });
     

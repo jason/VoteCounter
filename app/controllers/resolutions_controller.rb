@@ -24,12 +24,12 @@ class ResolutionsController < ApplicationController
   def show
     @resolution = Resolution.find(params[:id])
     @members = Member.all
-    @vote = VoteType.all
+    @vote_types = VoteType.all
   end
 
   def edit
     @resolution = Resolution.find(params[:id])
     @members = Member.all
-    
   end
+  
 end
