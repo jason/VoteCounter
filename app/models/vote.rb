@@ -6,5 +6,4 @@ class Vote < ActiveRecord::Base
 
   validates_uniqueness_of :member_id, :scope => :resolution_id
 
-
 end

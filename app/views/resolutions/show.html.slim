@@ -1,13 +1,16 @@
 = provide(:title, @resolution.title)
+- content_for :javascript_includes do
+  = javascript_include_tag "highcharts.js"
+
 .row
-  .large-10.columns
+  .large-6.columns
     h3 = @resolution.title 
     p = @resolution.body
     - @members.each do |n|
       = n.name
       = form_for(n.votes.build(:member_id => n.id, \
-        :resolution_id => @resolution.id), :html => {:class => "custom new_vote"}, :remote => true, \
-        ) do |f|
+        :resolution_id => @resolution.id), :html => {:class => "custom new_vote"}, \
+        :remote => true) do |f|
         - @vote_types.each do |option|
           = f.label(:vote_type_id, "#{f.radio_button(:vote_type_id, \
             option.id, :class => "radio")}<span class='custom radio'></span>\
@@ -15,17 +18,66 @@
           = f.hidden_field(:member_id)
           = f.hidden_field(:resolution_id)
 
-  .large-2.columns.counter
-      = render :partial => "vote_types/vote_type", :collection => @vote_types, \
-        :locals => { :resolution => @resolution }
-      
+  .large-6.columns
+      #votes_chart
+
+      table
+        thead
+          tr
+            th Aye
+            th Nay
+            th Abstain
+        tbody
+          tr.counter
+            = render :partial => "vote_types/vote_type", :collection => @vote_types, \
+              :locals => { :resolution => @resolution }
+
 javascript:
-  $(document).ready(function() {
-    $('.radio').change(function () {
-      //$.post("/votes", );
-      $(this).closest('form').submit();
+  $(function() {
+    var aye = +$(".aye").html();
+    var nay = +$(".nay").html()
+    var abstain = +$(".abstain").html()
+    var chart = new Highcharts.Chart({
+      chart: { renderTo: 'votes_chart'},
+      title: { text: "Votes"},
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.percentage}%</b>',
+        percentageDecimals: 1
+      },
+      plotOptions: {
+          pie: {
+              allowPointSelect: true,
+              cursor: 'pointer',
+              dataLabels: {
+                  enabled: true,
+                  color: '#000000',
+                  connectorColor: '#000000',
+                  formatter: function() {
+                      return '<b>'+ this.point.name +'</b>: '+ this.percentage.toFixed(2) +' %';
+                  }
+              }
+          }
+      },      
+      series: [{
+            type: 'pie',
+            name: 'Votes',
+            data: [
+                ['Aye',   aye],
+                ['Nay',       nay],
+                ['Abstain',    abstain],
+            ]
+        }]
+      });
+      $('.radio').change(function () {
+        $(this).closest('form').submit()
+        .on('ajax:success', function () {
+          chart.series[0].data[0].update(+$(".aye").html());
+          chart.series[0].data[1].update(+$(".nay").html());
+          chart.series[0].data[2].update(+$(".abstain").html());
+          });
+      });
+
     });
-  });
     
          
         
