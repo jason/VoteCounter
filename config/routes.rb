@@ -1,13 +1,15 @@
 VoteCounter::Application.routes.draw do
   root :to => "meetings#index"
   devise_for :users
+
   resources :meetings do
     resources :resolutions
   end
+  
   resources :resolutions
   resources :members
-  
   resources :votes
+  
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

@@ -16,9 +16,23 @@ html
       section.top-bar-section
         ul.right
           li.has-dropdown
-            = link_to "Members", members_url
+            = link_to("Members", members_url)
             ul.dropdown
-              li = link_to "Add Member", new_member_url
+              li = link_to("Add Member", new_member_url)
+          - if user_signed_in?
+            li.has-dropdown 
+              = link_to("Edit #{current_user.email}", edit_user_registration_path)
+              ul.dropdown
+                li = link_to("Logout", destroy_user_session_path, method: :delete)
+          - else
+            li.has-dropdown 
+              = link_to('Login', new_user_session_path)
+              ul.dropdown
+                li 
+                  = link_to("Sign Up", new_user_registration_path)
     .row
       .large-12.columns
+
+        - flash.each do |name, msg|
+          = content_tag :div, msg, id: "flash_#{name}"
         = yield
