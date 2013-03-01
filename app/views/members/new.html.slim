@@ -1,7 +1,7 @@
 = provide(:title, "Add Member")
 
 .row
-  .six.columns
+  .6-large.columns
     h1 = yield(:title)
 
     = form_for(@member) do |f|
@@ -11,3 +11,4 @@
       = f.label :email
       = f.text_field :email
       = f.submit
+  .6-large.columns

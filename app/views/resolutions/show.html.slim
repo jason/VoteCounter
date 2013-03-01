@@ -1,31 +1,29 @@
 = provide(:title, @resolution.title)
 .row
-  .ten.columns
-    h2 = @resolution.title 
+  .large-10.columns
+    h3 = @resolution.title 
     p = @resolution.body
     - @members.each do |n|
       = n.name
-      = form_for(n.votes.build(:member_id => n.id, :resolution_id => @resolution.id), :html => {:class => "custom"}, :remote => true) do |f| 
-        - VoteType.all.each_with_index do |option, index|
-          = f.label(:vote_type_id, option.name, :class => "vote")
-          = f.radio_button(:vote_type_id, option.id, :class => "radio") 
+      = form_for(n.votes.build(:member_id => n.id, \
+        :resolution_id => @resolution.id), :html => {:class => "custom new_vote"}, :remote => true, \
+        ) do |f|
+        - @vote_types.each do |option|
+          = f.label(:vote_type_id, "#{f.radio_button(:vote_type_id, \
+            option.id, :class => "radio")}<span class='custom radio'></span>\
+            #{option.name}".html_safe, :class => "vote")
           = f.hidden_field(:member_id)
           = f.hidden_field(:resolution_id)
 
-  .two.columns.counter
-      = render :partial => "vote_types/vote_type", :collection => @vote_types, :locals => { :resolution => @resolution }
+  .large-2.columns.counter
+      = render :partial => "vote_types/vote_type", :collection => @vote_types, \
+        :locals => { :resolution => @resolution }
       
-
-
 javascript:
   $(document).ready(function() {
     $('.radio').change(function () {
-      //$.post("/votes", function (callback) {return callback});
-      //{
-      //type: "POST",
-      //url: "/votes"})
+      //$.post("/votes", );
       $(this).closest('form').submit();
-
     });
   });
     

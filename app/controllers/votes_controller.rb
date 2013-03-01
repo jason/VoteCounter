@@ -9,6 +9,9 @@ class VotesController < ApplicationController
     @vote = Vote.create(params[:vote])
     @vote_types = VoteType.all
     @resolution = Resolution.find(@vote.resolution_id)
+    p "Hello! #{@vote.member_id}"
+    if Vote.where(:member_id => @vote.member_id, :resolution_id => @vote.resolution_id).first.destroy
+    end
     if @vote.save!
       flash[:notice] = "New Resolution created!"
     end

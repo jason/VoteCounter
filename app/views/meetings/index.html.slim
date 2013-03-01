@@ -1,10 +1,11 @@
 h3.subheader Meeting Date
 
-.six.columns.meetings
+.6-large.columns.meetings
   = render @meetings
 
-.two.columns.end
+.2-large.columns
   = form_for Meeting.new, :remote => true do |f|
     = f.label :meeting_date, "New Meeting Date"
     = f.date_select :meeting_date
     = f.submit
+.4-large.columns
