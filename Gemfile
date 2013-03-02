@@ -7,6 +7,7 @@ gem 'slim-rails'
 gem 'devise'
 gem 'awesome_print', :require => 'ap'
 gem 'jquery-rails'
+gem 'zurb-foundation', '>= 4.0.2'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :assets do
@@ -18,7 +19,7 @@ group :assets do
 
   # Add these gems
   gem 'compass-rails'
-  gem 'zurb-foundation', '>= 4.0.2'
+  
   gem 'uglifier', '>= 1.0.3'
 end
 
