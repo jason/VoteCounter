@@ -18,7 +18,7 @@ group :assets do
 
   # Add these gems
   gem 'compass-rails'
-  gem 'zurb-foundation'
+  gem 'zurb-foundation', '>= 4.0.2'
   gem 'uglifier', '>= 1.0.3'
 end
 
