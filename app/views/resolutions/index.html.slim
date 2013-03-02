@@ -2,7 +2,8 @@
   .large-12.columns
     h3 #{ @meeting.meeting_date.strftime("%B %d, %Y")} Resolutions
 
-    h5 = link_to "New Resolution", new_meeting_resolution_path(@meeting), :class => "new_link", :remote => true
+    - if user_signed_in?   
+      h5 = link_to "New Resolution", new_meeting_resolution_path(@meeting), :class => "new_link", :remote => true
     
     ul.resolutions
       = render @resolutions

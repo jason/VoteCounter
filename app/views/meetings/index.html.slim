@@ -1,11 +1,12 @@
 h3.subheader Meeting Date
+.row
+  .large-6.columns.meetings
+    = render @meetings
 
-.6-large.columns.meetings
-  = render @meetings
-
-.2-large.columns
-  = form_for Meeting.new, :remote => true do |f|
-    = f.label :meeting_date, "New Meeting Date"
-    = f.date_select :meeting_date
-    = f.submit
-.4-large.columns
+  .large-2.columns
+    - if user_signed_in?
+      = form_for Meeting.new, :remote => true do |f|
+        = f.label :meeting_date, "New Meeting Date"
+        = f.date_select :meeting_date
+        = f.submit
+  .large-4.columns
