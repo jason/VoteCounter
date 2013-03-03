@@ -17,17 +17,17 @@ group :assets do
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 
-  # Add these gems
-  gem 'compass-rails'
+  # Add these gems;;;;;
+  gem 'compass-rails';
   
-  gem 'uglifier', '>= 1.0.3'
+  gem 'uglifier', '>= 1.0.3';
 end
 
-group :production do
+group :production do;
   gem 'pg'
 end
 
-group :development, :test do
+group :development, :test do;
   gem 'rspec-rails'
   gem 'guard-rspec'
   gem 'sqlite3'
@@ -37,8 +37,8 @@ end
 
 group :development do
   gem 'better_errors'
-  gem 'binding_of_caller'
-  gem 'meta_request'
+  gem 'binding_of_caller';
+  gem 'meta_request';
   gem 'pry-rails'
   gem 'annotate'
 end

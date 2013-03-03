@@ -1,6 +1,6 @@
 class ResolutionsController < ApplicationController
   respond_to :html, :js
-
+  
   def new
     @meeting = Meeting.find(params[:meeting_id])
     @resolution = @meeting.resolutions.build
@@ -22,7 +22,7 @@ class ResolutionsController < ApplicationController
   end
 
   def show
-    @resolution = Resolution.find(params[:id])
+    @resolution = Resolution.includes(:votes => [:member, :vote_type]).find(params[:id])
     @members = Member.all
     @vote_types = VoteType.all
   end

@@ -18,7 +18,7 @@ class VotesController < ApplicationController
     @resolution = Resolution.find(@vote.resolution_id)
     p "Hello! #{@vote.member_id}"
     if @vote.save!
-      flash[:notice] = "New Resolution created!"
+      flash[:notice] = "New vote created!"
     end
     respond_with(@vote_types, :location => resolution_url(@vote.resolution_id))
   end

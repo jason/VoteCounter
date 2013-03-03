@@ -7,9 +7,12 @@
     h3 = @resolution.title 
     p = @resolution.body
     - if user_signed_in?
-      - @members.each do |n|
-        = n.name
-        = form_for(n.votes.build(:member_id => n.id, \
+      /- @resolution.votes.each do |vote|
+      /  | hello!
+      /  = vote.member.name
+      - @members.each do |member|
+        = member.name
+        = form_for(member.votes.build(:member_id => member.id, \
           :resolution_id => @resolution.id), :html => {:class => "custom new_vote"}, \
           :remote => true) do |f|
           - @vote_types.each do |option|
@@ -24,13 +27,12 @@
             tr
               th Name
               th Vote
-            - @members.each do |n|
-              tr 
-                td = n.name
-                td = @vote_types[@resolution.votes.where(:member_id => n).first.vote_type_id - 1].name
+            - @resolution.votes.each do |vote|
+              tr
+                td =  vote.member.name
+                td =  vote.vote_name
   .large-6.columns
       #votes_chart
-
       table
         thead
           tr
@@ -86,7 +88,6 @@ javascript:
           chart.series[0].data[2].update(+$(".abstain").html());
           });
       });
-
     });
     
          
