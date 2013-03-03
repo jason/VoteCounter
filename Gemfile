@@ -7,7 +7,7 @@ gem 'slim-rails'
 gem 'devise'
 gem 'awesome_print', :require => 'ap'
 gem 'jquery-rails'
-
+gem 'newrelic_rpm'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 group :assets do
